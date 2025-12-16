@@ -1,10 +1,13 @@
 let button = document.querySelector('#button');
 let timer = document.querySelector('.tiempo');
+let barraProgreso = document.querySelectorAll('.progreso')
+let contador = 0
+
 
 let estaCorriendo = false //para configurar el boton inicio
 let intervalo = null
 
-let tiempoRestante = 2*60 //pasa los minutos a segundos
+let tiempoRestante = 25*60 //pasa los minutos a segundos
 let descanosCorto = 5*60
 let estado = 'trabajo'
 
@@ -25,6 +28,10 @@ const inicio = () =>{
             tiempoRestante--;
             contadorActualizado(tiempoRestante);
             if (tiempoRestante === 0){
+                if (contador<barraProgreso.length){
+                    barraProgreso[contador].classList.add('completado');
+                }
+                contador++;
                 alert('Descansa!');
                 estado = 'descanso'
         }
