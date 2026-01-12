@@ -1,6 +1,7 @@
-let button = document.querySelector('#button');
+let button = document.querySelector('#start');
 let timer = document.querySelector('.tiempo');
 let barraProgreso = document.querySelectorAll('.progreso')
+let resetButton = document.querySelector('#reset')
 let contador = 0
 
 
@@ -14,7 +15,7 @@ let estado = 'trabajo'
 const contadorActualizado = (tiempo)=>{
     const minutos = Math.floor(tiempo/60);
     const segundos = tiempo % 60;
-    timer.textContent = `${minutos}:${segundos}`
+    timer.textContent = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
 }
 
 
@@ -69,4 +70,19 @@ const verificarEstado=()=>{
     }
 }
 
+const reset = ()=>{
+    estaCorriendo = false
+    estado = 'trabajo';
+    tiempoRestante = 25 * 60;
+    descanosCorto = 5 * 60;
+    contador = 0;
+    barraProgreso.forEach(barra =>{ //borro cada una de los completados
+        barra.classList.remove('completado')
+    });
+    timer.style.backgroundColor = 'var(--tm-color)';
+    contadorActualizado(tiempoRestante);
+    pausa();
+}
+
 button.addEventListener("click", verificarEstado);
+resetButton.addEventListener('click', reset);

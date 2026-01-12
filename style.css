@@ -22,6 +22,7 @@ main{
     justify-content: center;
 }
 
+
 .tiempo{
     background-color: var(--tm-color);
     width: 300px;
@@ -53,6 +54,15 @@ button{
 button:hover{
     opacity: .5;
     scale: 1.01;
+}
+
+#reset{
+    width: 50px;
+    border-radius: 100%;
+}
+
+#start{
+    margin-top: 20px;
 }
 
 .seccionProgreso{
