@@ -3,6 +3,7 @@ let timer = document.querySelector('.tiempo');
 let barraProgreso = document.querySelectorAll('.progreso')
 let resetButton = document.querySelector('#reset')
 let contador = 0
+let alarma = document.querySelector('#alarma');
 
 
 let estaCorriendo = false //para configurar el boton inicio
@@ -33,7 +34,7 @@ const inicio = () =>{
                     barraProgreso[contador].classList.add('completado');
                 }
                 contador++;
-                alert('Descansa!');
+                alarma.play();
                 estado = 'descanso'
         }
         }else{
@@ -44,7 +45,7 @@ const inicio = () =>{
                 if (descanosCorto == 0){
                     pausa();
                     estado = 'trabajo';
-                    alert('A trabajar!');
+                    alarma.play();
                     tiempoRestante = 25 * 60;
                     descanosCorto = 5 * 60;
                     contadorActualizado(tiempoRestante);
